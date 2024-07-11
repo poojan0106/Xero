@@ -1,0 +1,29 @@
+{
+  "Id": "4a1ece91-3220-485a-bee9-8a3b71886e2e",
+  "Status": "OK",
+  "ProviderName": "Bundilla sandbox app",
+  "DateTimeUTC": "\/Date(1624436924826)\/",
+  "Allocations": [
+    {
+      "Amount": 350.00,
+      "Date": "\/Date(-62135596800000)\/",
+      "Invoice": {
+        "InvoiceID": "30aa67f9-d5e5-4351-9e28-c085a6b2d37f",
+        "Payments": [],
+        "CreditNotes": [],
+        "Prepayments": [],
+        "Overpayments": [],
+        "IsDiscounted": false,
+        "HasErrors": false,
+        "LineItems": [],
+        "ValidationErrors": []
+      },
+      "Prepayment": {
+        "PrepaymentID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+        "ID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+        "LineItems": []
+      },
+      "ValidationErrors": []
+    }
+  ]
+}

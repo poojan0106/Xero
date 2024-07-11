@@ -1,0 +1,92 @@
+{
+  "Id": "d804e7ba-a115-44de-bd0c-7052c1a623fb",
+  "Status": "OK",
+  "ProviderName": "Bundilla sandbox app",
+  "DateTimeUTC": "\/Date(1624436923705)\/",
+  "Prepayments": [
+    {
+      "PrepaymentID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+      "ID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0016",
+      "RemainingCredit": 350.00,
+      "Allocations": [],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "baf623cf-25d2-4938-af88-11ab08a5502c",
+        "Name": "TestBy Yogesh-June-parent",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "AUTHORISED",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [
+        {
+          "Description": "350 prepay-1",
+          "UnitAmount": 350.00,
+          "TaxType": "NONE",
+          "TaxAmount": 0.00,
+          "LineAmount": 350.00,
+          "AccountCode": "200",
+          "Tracking": [],
+          "Quantity": 1.0000,
+          "LineItemID": "ef8553c3-a7d2-4bb9-9a0b-80877a8820d2",
+          "AccountID": "0a4abd40-0174-4498-bd11-7d58c8d50725"
+        }
+      ],
+      "SubTotal": 350.00,
+      "TotalTax": 0.00,
+      "Total": 350.00,
+      "UpdatedDateUTC": "\/Date(1624436621860+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "2e9f8bd3-6130-41d5-a7f7-ad746aa5c474",
+      "ID": "2e9f8bd3-6130-41d5-a7f7-ad746aa5c474",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0017",
+      "RemainingCredit": 150.00,
+      "Allocations": [],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "baf623cf-25d2-4938-af88-11ab08a5502c",
+        "Name": "TestBy Yogesh-June-parent",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "AUTHORISED",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [
+        {
+          "Description": "150 prepay-2",
+          "UnitAmount": 150.00,
+          "TaxType": "NONE",
+          "TaxAmount": 0.00,
+          "LineAmount": 150.00,
+          "AccountCode": "200",
+          "Tracking": [],
+          "Quantity": 1.0000,
+          "LineItemID": "32a67bb7-6f05-4fe2-a8c3-30b3e6631dac",
+          "AccountID": "0a4abd40-0174-4498-bd11-7d58c8d50725"
+        }
+      ],
+      "SubTotal": 150.00,
+      "TotalTax": 0.00,
+      "Total": 150.00,
+      "UpdatedDateUTC": "\/Date(1624436679390+0000)\/",
+      "CurrencyCode": "AUD"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "Id": "18a98de7-4c1b-4561-8aad-c938443ed99b",
+  "Status": "OK",
+  "ProviderName": "Xero API Previewer",
+  "DateTimeUTC": "\/Date(1616747532120)\/",
+  "Payments": [
+    {
+      "PaymentID": "a5853245-94e8-42dd-8d79-561b7f59cd7c",
+      "Date": "\/Date(1616716800000+0000)\/",
+      "BankAmount": 2222.00,
+      "Amount": 2222.00,
+      "Reference": "ResCloud INV-0151 Visa",
+      "CurrencyRate": 1.000000,
+      "PaymentType": "ACCRECPAYMENT",
+      "Status": "AUTHORISED",
+      "UpdatedDateUTC": "\/Date(1616740070323+0000)\/",
+      "HasAccount": true,
+      "IsReconciled": false,
+      "Account": {
+        "AccountID": "f2bae356-2eb8-403d-801a-8b9732a61cc6",
+        "Name": "Res Bank "
+      },
+      "Invoice": {
+        "Type": "ACCREC",
+        "InvoiceID": "30aa67f9-d5e5-4351-9e28-c085a6b2d37f",
+        "InvoiceNumber": "INV-0151",
+        "Reference": "Yogesh parent Account - billing, Australia, New South Wales, AU",
+        "Payments": [
+          {
+            "PaymentID": "a5853245-94e8-42dd-8d79-561b7f59cd7c",
+            "Date": "\/Date(1616716800000+0000)\/",
+            "Amount": 2222.00,
+            "Reference": "ResCloud INV-0151 Visa",
+            "CurrencyRate": 1.000000,
+            "HasAccount": false,
+            "HasValidationErrors": false
+          }
+        ],
+        "Prepayments": [],
+        "Overpayments": [],
+        "AmountDue": 1040.60,
+        "AmountPaid": 2222.00,
+        "SentToContact": false,
+        "CurrencyRate": 1.000000,
+        "TotalDiscount": 234.02,
+        "IsDiscounted": true,
+        "HasErrors": false,
+        "Contact": {
+          "ContactID": "10b46b4c-35c1-49c4-a7eb-983ab08ebe1a",
+          "Name": "Yogesh parent Account",
+          "ContactPersons": [],
+          "HasValidationErrors": false
+        },
+        "DateString": "2021-03-26T00:00:00",
+        "Date": "\/Date(1616716800000+0000)\/",
+        "DueDateString": "2021-03-31T00:00:00",
+        "DueDate": "\/Date(1617148800000+0000)\/",
+        "BrandingThemeID": "aad2c86b-4dbc-4653-9f15-49b1e2112634",
+        "Status": "AUTHORISED",
+        "LineAmountTypes": "Inclusive",
+        "LineItems": [
+          {
+            "Description": "Rodent Station",
+            "UnitAmount": 10.00,
+            "TaxType": "OUTPUT",
+            "TaxAmount": 47.50,
+            "LineAmount": 522.50,
+            "AccountCode": "200",
+            "Tracking": [],
+            "Quantity": 55.0000,
+            "DiscountRate": 5.00,
+            "LineItemID": "511bdf94-14ab-4931-965c-5dde8e687832",
+            "DiscountEnteredAsPercent": true,
+            "DiscountAmount": 25.0000,
+            "ValidationErrors": []
+          },
+          {
+            "Description": "R/E - Flea Treatment - House 6L",
+            "UnitAmount": 10.00,
+            "TaxType": "OUTPUT",
+            "TaxAmount": 65.10,
+            "LineAmount": 716.10,
+            "AccountCode": "200",
+            "Tracking": [],
+            "Quantity": 77.0000,
+            "DiscountRate": 7.00,
+            "LineItemID": "190f84f5-cf86-40fc-a9bc-1cda515b73fa",
+            "DiscountEnteredAsPercent": true,
+            "DiscountAmount": 49.0000,
+            "ValidationErrors": []
+          },
+          {
+            "Description": "Rodent Station",
+            "UnitAmount": 25.00,
+            "TaxType": "OUTPUT",
+            "TaxAmount": 184.00,
+            "LineAmount": 2024.00,
+            "AccountCode": "200",
+            "Tracking": [],
+            "Quantity": 88.0000,
+            "DiscountRate": 8.00,
+            "LineItemID": "378c5182-a672-4779-863a-b9ec333f1723",
+            "DiscountEnteredAsPercent": true,
+            "DiscountAmount": 160.0200,
+            "ValidationErrors": []
+          },
+          {
+            "Description": "FSNote Yogesh123",
+            "Tracking": [],
+            "LineItemID": "728bdd2d-948d-4b93-8011-da8f20b1f373",
+            "ValidationErrors": []
+          }
+        ],
+        "SubTotal": 2966.00,
+        "TotalTax": 296.60,
+        "Total": 3262.60,
+        "UpdatedDateUTC": "\/Date(1616740070323+0000)\/",
+        "CurrencyCode": "AUD"
+      },
+      "HasValidationErrors": false
+    }
+  ]
+}

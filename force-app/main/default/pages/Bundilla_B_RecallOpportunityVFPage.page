@@ -1,0 +1,5 @@
+<apex:page standardController="WorkOrderLineItem" extensions="Bundilla_B_RecallOpportunityController">
+    <apex:form >
+        <apex:commandButton action="{!callBatch}" value="Submit Batch" />
+    </apex:form>
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:page standardController="WorkOrder" lightningStylesheets="false" standardStylesheets="false" action="{!callFinishWorkOrderHelper}"  extensions="FinishFlowInternalyController">
+    <apex:pageMessages ></apex:pageMessages>
+     <apex:form >
+     	<apex:commandButton value="Go Back"  action="{!goBack}" style="margin: 15px;"/>
+    </apex:form>
+</apex:page>

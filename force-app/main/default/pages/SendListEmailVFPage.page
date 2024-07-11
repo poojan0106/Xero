@@ -1,0 +1,15 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities" lightningStylesheets="true">
+    <apex:includeLightning />
+    <div id="sendListEmailContainer" />
+    <script>
+        $Lightning.use("c:SendListEmailApp", function() {
+            $Lightning.createComponent("c:sendListEmailFromOpp",
+                { recordIds: '{!opportunities}' },
+                "sendListEmailContainer",
+                function(cmp) {
+                    console.log("Component created");
+                }
+            );
+        });
+    </script>
+</apex:page>

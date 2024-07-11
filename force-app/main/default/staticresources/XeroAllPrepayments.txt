@@ -1,0 +1,1012 @@
+{
+  "Id": "63695e71-7688-4cb2-bd65-a139f65cb751",
+  "Status": "OK",
+  "ProviderName": "Bundilla sandbox app",
+  "DateTimeUTC": "\/Date(1624520381904)\/",
+  "Prepayments": [
+    {
+      "PrepaymentID": "1aba06f5-e339-4790-86b9-e82c1da0d069",
+      "ID": "1aba06f5-e339-4790-86b9-e82c1da0d069",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0003",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 350.00,
+          "Date": "\/Date(1621987200000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "28ef47f5-51dc-44f3-8388-a20d0a1c3e15",
+            "InvoiceNumber": "INV-13338",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-05-26T00:00:00",
+      "Date": "\/Date(1621987200000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 350.00,
+      "TotalTax": 0.00,
+      "Total": 350.00,
+      "UpdatedDateUTC": "\/Date(1622012067317+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "ceb87379-86e3-4194-b6d9-5a54b360f6c5",
+      "ID": "ceb87379-86e3-4194-b6d9-5a54b360f6c5",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0001",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 200.00,
+          "Date": "\/Date(1622073600000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "8bac96f8-4553-4f4c-a2c5-237c1962cf1d",
+            "InvoiceNumber": "INV-13340",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "b29509c5-5fe1-4ef7-9d41-2729fc6f43c9",
+        "Name": "Beau Rheinberger",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-05-26T00:00:00",
+      "Date": "\/Date(1621987200000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 200.00,
+      "TotalTax": 0.00,
+      "Total": 200.00,
+      "UpdatedDateUTC": "\/Date(1622080029823+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "23c1f51a-af3c-4b92-9cd3-2fe3f14a8e13",
+      "ID": "23c1f51a-af3c-4b92-9cd3-2fe3f14a8e13",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0007",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 110.00,
+          "Date": "\/Date(1623369600000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "6aa51b3d-1d34-4e87-8c89-98482d6052e3",
+            "InvoiceNumber": "INV-13348",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-10T00:00:00",
+      "Date": "\/Date(1623283200000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 100.00,
+      "TotalTax": 10.00,
+      "Total": 110.00,
+      "UpdatedDateUTC": "\/Date(1623386438103+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "7f261c22-9b35-46cb-aae1-f725d422d788",
+      "ID": "7f261c22-9b35-46cb-aae1-f725d422d788",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0008",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 1320.00,
+          "Date": "\/Date(1623369600000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "6aa51b3d-1d34-4e87-8c89-98482d6052e3",
+            "InvoiceNumber": "INV-13348",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-11T00:00:00",
+      "Date": "\/Date(1623369600000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 1200.00,
+      "TotalTax": 120.00,
+      "Total": 1320.00,
+      "UpdatedDateUTC": "\/Date(1623386438940+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "a6baf48a-ca68-44af-95ba-32b3996daad3",
+      "ID": "a6baf48a-ca68-44af-95ba-32b3996daad3",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0006",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 2000.00,
+          "Date": "\/Date(1623283200000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "ba73672f-e0b2-47f8-82ff-24533f2d7861",
+            "InvoiceNumber": "INV-13347",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "7e6ef508-4978-40a9-868d-ae2f6afa6a6c",
+            "InvoiceNumber": "INV-13349",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "5f453233-1cb1-4480-be3f-e6b07eb97054",
+            "InvoiceNumber": "INV-13351",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-10T00:00:00",
+      "Date": "\/Date(1623283200000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 2000.00,
+      "TotalTax": 200.00,
+      "Total": 2200.00,
+      "UpdatedDateUTC": "\/Date(1623653635277+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "6f4f830a-61b3-496f-9807-52dbe65b76bc",
+      "ID": "6f4f830a-61b3-496f-9807-52dbe65b76bc",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0009",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 50.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "db346223-3cb4-4df9-8919-d8e89980ea36",
+            "InvoiceNumber": "INV-13353",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 170.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "e84461a0-125e-447d-810f-3e0b133cf4bf",
+            "InvoiceNumber": "INV-13354",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-14T00:00:00",
+      "Date": "\/Date(1623628800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 200.00,
+      "TotalTax": 20.00,
+      "Total": 220.00,
+      "UpdatedDateUTC": "\/Date(1623654590817+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "41ee6577-1f0c-491a-8662-4b6486a82747",
+      "ID": "41ee6577-1f0c-491a-8662-4b6486a82747",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0010",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 70.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "add2ded2-b002-4fca-8c64-13e61a2484f1",
+            "InvoiceNumber": "INV-13355",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 150.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "ff8f74a0-a9ec-4b96-b3b0-340f2dd7f4c7",
+            "InvoiceNumber": "INV-13356",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-14T00:00:00",
+      "Date": "\/Date(1623628800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 200.00,
+      "TotalTax": 20.00,
+      "Total": 220.00,
+      "UpdatedDateUTC": "\/Date(1623655384827+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "f7bfdb9d-e1ac-47cc-af07-02068b1a6052",
+      "ID": "f7bfdb9d-e1ac-47cc-af07-02068b1a6052",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0011",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 70.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "add2ded2-b002-4fca-8c64-13e61a2484f1",
+            "InvoiceNumber": "INV-13355",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 150.00,
+          "Date": "\/Date(1623628800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "ff8f74a0-a9ec-4b96-b3b0-340f2dd7f4c7",
+            "InvoiceNumber": "INV-13356",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-14T00:00:00",
+      "Date": "\/Date(1623628800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 200.00,
+      "TotalTax": 20.00,
+      "Total": 220.00,
+      "UpdatedDateUTC": "\/Date(1623655385277+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "7dabfec7-dabf-4d39-ba28-ae71c600b1e4",
+      "ID": "7dabfec7-dabf-4d39-ba28-ae71c600b1e4",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0005",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 10.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "8de00e45-423a-48af-a9c9-122d61984692",
+            "InvoiceNumber": "INV-13358",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "b29509c5-5fe1-4ef7-9d41-2729fc6f43c9",
+        "Name": "Beau Rheinberger",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-08T00:00:00",
+      "Date": "\/Date(1623110400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 10.00,
+      "TotalTax": 0.00,
+      "Total": 10.00,
+      "UpdatedDateUTC": "\/Date(1624408605717+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "7e0e9b3e-f0f9-4648-a87b-50c4ab069e28",
+      "ID": "7e0e9b3e-f0f9-4648-a87b-50c4ab069e28",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0004",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "8de00e45-423a-48af-a9c9-122d61984692",
+            "InvoiceNumber": "INV-13358",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 320.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "7a8773d6-4c8f-4d3d-8ab5-84613cad89f7",
+            "InvoiceNumber": "INV-13359",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "b29509c5-5fe1-4ef7-9d41-2729fc6f43c9",
+        "Name": "Beau Rheinberger",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-08T00:00:00",
+      "Date": "\/Date(1623110400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 420.00,
+      "TotalTax": 0.00,
+      "Total": 420.00,
+      "UpdatedDateUTC": "\/Date(1624409941507+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "ce979dc3-be0e-4bf8-b66b-36b70e33b3cd",
+      "ID": "ce979dc3-be0e-4bf8-b66b-36b70e33b3cd",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0012",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "57046dce-4ae2-4424-b36f-7116366e15ec",
+            "InvoiceNumber": "INV-13361",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 100.00,
+      "TotalTax": 0.00,
+      "Total": 100.00,
+      "UpdatedDateUTC": "\/Date(1624419960540+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "1212f278-9ba1-4772-a2cb-b940bd689c5b",
+      "ID": "1212f278-9ba1-4772-a2cb-b940bd689c5b",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0013",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 10.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "57046dce-4ae2-4424-b36f-7116366e15ec",
+            "InvoiceNumber": "INV-13361",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 10.00,
+      "TotalTax": 0.00,
+      "Total": 10.00,
+      "UpdatedDateUTC": "\/Date(1624419960930+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "a4adf385-6053-4373-8f63-a7b426c2401a",
+      "ID": "a4adf385-6053-4373-8f63-a7b426c2401a",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0014",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "bf77a440-95fa-416e-abc4-5252ec1b782d",
+            "InvoiceNumber": "INV-13362",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 100.00,
+      "TotalTax": 0.00,
+      "Total": 100.00,
+      "UpdatedDateUTC": "\/Date(1624424238297+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "99de15df-c55b-4711-9dcb-17956561b114",
+      "ID": "99de15df-c55b-4711-9dcb-17956561b114",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0015",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 10.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "bf77a440-95fa-416e-abc4-5252ec1b782d",
+            "InvoiceNumber": "INV-13362",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 10.00,
+      "TotalTax": 0.00,
+      "Total": 10.00,
+      "UpdatedDateUTC": "\/Date(1624424238700+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+      "ID": "17020147-39af-46b0-9447-53b1ca7fdbd9",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0016",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 350.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "2c438a63-2cca-437a-969d-7fe05922890b",
+            "InvoiceNumber": "INV-13373",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "baf623cf-25d2-4938-af88-11ab08a5502c",
+        "Name": "TestBy Yogesh-June-parent",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 350.00,
+      "TotalTax": 0.00,
+      "Total": 350.00,
+      "UpdatedDateUTC": "\/Date(1624436924303+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "2e9f8bd3-6130-41d5-a7f7-ad746aa5c474",
+      "ID": "2e9f8bd3-6130-41d5-a7f7-ad746aa5c474",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0017",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 150.00,
+          "Date": "\/Date(1624406400000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "2c438a63-2cca-437a-969d-7fe05922890b",
+            "InvoiceNumber": "INV-13373",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "baf623cf-25d2-4938-af88-11ab08a5502c",
+        "Name": "TestBy Yogesh-June-parent",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-23T00:00:00",
+      "Date": "\/Date(1624406400000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 150.00,
+      "TotalTax": 0.00,
+      "Total": 150.00,
+      "UpdatedDateUTC": "\/Date(1624436924717+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "baacc895-df29-42df-aaf0-01573f4f3fa2",
+      "ID": "baacc895-df29-42df-aaf0-01573f4f3fa2",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0019",
+      "RemainingCredit": 10.00,
+      "Allocations": [],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "8c9cd19b-4c05-40bf-b543-6f2404ea9522",
+        "Name": "Yogesh parent Account",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-24T00:00:00",
+      "Date": "\/Date(1624492800000+0000)\/",
+      "Status": "AUTHORISED",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 10.00,
+      "TotalTax": 0.00,
+      "Total": 10.00,
+      "UpdatedDateUTC": "\/Date(1624503106170+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "9a8fe042-53ac-4370-a4b3-ac8f02f31d28",
+      "ID": "9a8fe042-53ac-4370-a4b3-ac8f02f31d28",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0020",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624492800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "e7acb2ca-8bee-497c-a7dc-3649f7d68475",
+            "InvoiceNumber": "INV-13379",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624492800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "8cb6b03b-7dec-4688-960f-c8a500153425",
+            "InvoiceNumber": "INV-13380",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "baf623cf-25d2-4938-af88-11ab08a5502c",
+        "Name": "TestBy Yogesh-June-parent",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-24T00:00:00",
+      "Date": "\/Date(1624492800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "NoTax",
+      "LineItems": [],
+      "SubTotal": 200.00,
+      "TotalTax": 0.00,
+      "Total": 200.00,
+      "UpdatedDateUTC": "\/Date(1624509547473+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "e7871058-0dde-473c-9d37-ec7c8df434ad",
+      "ID": "e7871058-0dde-473c-9d37-ec7c8df434ad",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0021",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 100.00,
+          "Date": "\/Date(1624492800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "4b9c48bd-d7b0-491e-9f11-6a8e715d7bf7",
+            "InvoiceNumber": "INV-13384",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "b29509c5-5fe1-4ef7-9d41-2729fc6f43c9",
+        "Name": "Beau Rheinberger",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-24T00:00:00",
+      "Date": "\/Date(1624492800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 100.00,
+      "TotalTax": 0.00,
+      "Total": 100.00,
+      "UpdatedDateUTC": "\/Date(1624517751947+0000)\/",
+      "CurrencyCode": "AUD"
+    },
+    {
+      "PrepaymentID": "68a27c13-d385-48dc-8fa6-2fc2025b1994",
+      "ID": "68a27c13-d385-48dc-8fa6-2fc2025b1994",
+      "Type": "RECEIVE-PREPAYMENT",
+      "Reference": "INV-0018",
+      "RemainingCredit": 0.00,
+      "Allocations": [
+        {
+          "Amount": 200.00,
+          "Date": "\/Date(1624492800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "4b9c48bd-d7b0-491e-9f11-6a8e715d7bf7",
+            "InvoiceNumber": "INV-13384",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        },
+        {
+          "Amount": 240.00,
+          "Date": "\/Date(1624492800000+0000)\/",
+          "Invoice": {
+            "InvoiceID": "df35fac9-7f5d-41d4-be42-4501b6577b87",
+            "InvoiceNumber": "INV-13385",
+            "Payments": [],
+            "CreditNotes": [],
+            "Prepayments": [],
+            "Overpayments": [],
+            "IsDiscounted": false,
+            "HasErrors": false,
+            "LineItems": []
+          }
+        }
+      ],
+      "Payments": [],
+      "HasAttachments": false,
+      "Contact": {
+        "ContactID": "b29509c5-5fe1-4ef7-9d41-2729fc6f43c9",
+        "Name": "Beau Rheinberger",
+        "Addresses": [],
+        "Phones": [],
+        "ContactGroups": [],
+        "ContactPersons": [],
+        "HasValidationErrors": false
+      },
+      "DateString": "2021-06-24T00:00:00",
+      "Date": "\/Date(1624492800000+0000)\/",
+      "Status": "PAID",
+      "LineAmountTypes": "Exclusive",
+      "LineItems": [],
+      "SubTotal": 440.00,
+      "TotalTax": 0.00,
+      "Total": 440.00,
+      "UpdatedDateUTC": "\/Date(1624518797710+0000)\/",
+      "CurrencyCode": "AUD"
+    }
+  ]
+}
