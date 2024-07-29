@@ -1,5 +1,5 @@
-public with sharing class XeroKeepConnectionScheduler implements Schedulable {
-    public void execute(SchedulableContext sc) {
-        System.enqueueJob(new XeroKeepConnection());
+public with sharing class XeroKeepConnectionScheduler {
+    public static void getCon(){
+        
     }
 }

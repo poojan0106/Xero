@@ -1,0 +1,6 @@
+<apex:page controller="XeroCalloutService">
+        <apex:form >
+            <!-- Button to trigger redirection -->
+            <apex:commandButton value="Go to Link" action="{!redirectToLink}" />
+        </apex:form>    
+</apex:page>

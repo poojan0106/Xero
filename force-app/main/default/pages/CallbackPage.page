@@ -1,0 +1,3 @@
+<apex:page controller="XeroAuthClass" action="{!handleCallback}">
+    <apex:outputText value="Authorization successful. Tokens have been stored." />
+</apex:page>

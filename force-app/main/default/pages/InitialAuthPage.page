@@ -1,0 +1,5 @@
+<apex:page controller="XeroAuthClass">
+    <apex:form >
+        <apex:commandButton value="Connect to Xero" action="{!redirectToXero}" />
+    </apex:form>
+</apex:page>
