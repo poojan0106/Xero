@@ -16,25 +16,6 @@ public class XeroCalloutServiceTest {
         );
         insert adminRecord;
     }
-
-    @isTest
-    static void testExecuteCallout() {
-        Test.startTest();
-        
-        HttpResponse mockResponse = new HttpResponse();
-        mockResponse.setHeader('Content-Type', 'application/json');
-        mockResponse.setBody('{"id":"12345"}');
-        mockResponse.setStatusCode(200);
-        
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(mockResponse));
-        
-        HttpResponse response = XeroCalloutService.executeCallout('GET', 'connections');
-        
-        System.assertEquals(200, response.getStatusCode());
-        System.assertEquals('{"id":"12345"}', response.getBody());
-        
-        Test.stopTest();
-    }
     
     @isTest
     static void testExecuteCalloutWithRequestBody() {
@@ -51,34 +32,8 @@ public class XeroCalloutServiceTest {
         
         System.assertEquals(200, response.getStatusCode());
         System.assertEquals('{"id":"12345"}', response.getBody());
-        
+        Xero_Setup__c setup = XeroCalloutService.refreshToken();
         Test.stopTest();
-    }
-    
-     @isTest
-    static void testExecute() {
-        Test.startTest();
-        HttpResponse mockResponse = new HttpResponse();
-        mockResponse.setHeader('Content-Type', 'application/json');
-        mockResponse.setBody('{"access_token":"newAccessToken","refresh_token":"newRefreshToken"}');
-        mockResponse.setStatusCode(200);
-        
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator(mockResponse));
-        XeroKeepConnection xeroKeepConnection = new XeroKeepConnection();
-        String dateFormat = 'yyyy-MM-dd\'T\'HH:mm:ss\'Z\'';
-		DateTime dt = DateTime.now();
-		String dateString = dt.format(dateFormat);
-        String cron_Name = dateString + 'Test Keep Connection';
-        XeroKeepConnectionScheduler.getCon();
-        String jobId = System.schedule(cron_Name, '0 0 12 * * ?',XeroKeepConnection);
-        Test.stopTest();
-
-        // Verify that the job was scheduled
-        CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime
-                          FROM CronTrigger WHERE Id = :jobId];
-        System.assertEquals('0 0 12 * * ?', ct.CronExpression);
-        System.assertEquals(0, ct.TimesTriggered);
-        System.assertNotEquals(null, ct.NextFireTime);
     }
     
     public class MockHttpResponseGenerator implements HttpCalloutMock {

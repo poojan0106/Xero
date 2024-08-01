@@ -1,7 +1,8 @@
 public class XeroOAuth2 {
     public static String getAuthorizationUrl() {
-         String clientId = '95F27C44F396432A88987D777F3207CA';
-        String redirectUrl = 'https://bundillapestcontrol--uat--c.sandbox.vf.force.com/apex/CallbackPage';
+        Xero_Admin__c adminSetup = Xero_Admin__c.getOrgDefaults();
+         String clientId = adminSetup.Client_Id__c;
+        String redirectUrl = adminSetup.redirectUrl__c;
         String scope = 'openid profile email offline_access accounting.transactions accounting.contacts';
         String state = '123';
         String authorizationUrl = 'https://login.xero.com/identity/connect/authorize';
@@ -17,9 +18,10 @@ public class XeroOAuth2 {
     }
 
     public static void exchangeCodeForToken(String code) {
-        String clientId = '95F27C44F396432A88987D777F3207CA';
-        String clientSecret = 'tEefjCxdxsMkq5aVYz29OCRuaGkPykk9eBsyc6BOMORaZzy5';
-        String redirectUri = 'https://bundillapestcontrol--uat--c.sandbox.vf.force.com/apex/CallbackPage';
+        Xero_Admin__c adminSetup = Xero_Admin__c.getOrgDefaults();
+        String clientId = adminSetup.Client_Id__c;
+        String clientSecret = adminSetup.Client_Secret__c;
+        String redirectUri = adminSetup.redirectUrl__c;
         String grantType = 'authorization_code';
 
         HttpRequest req = new HttpRequest();

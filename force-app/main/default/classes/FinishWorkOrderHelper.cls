@@ -12,12 +12,23 @@ public class FinishWorkOrderHelper {
     @future(callout=true)
     public static void createXeroContact(List<Id> accountIds)
     {
+            String accessToken;
+            Xero_Setup__c Tokens;
         try
         {
             List<account> lstAccountToUpdate = new List<Account>();
             List<Account> lst_accounts = new List<Account>();
             List<Id> lst_ParentAccountIds = new List<Id>();
-            
+
+            DateTime currentDateTime = DateTime.now();
+            Tokens = FinishWorkOrderHelper.CheckResponse(currentDateTime);
+
+            if (Tokens != null) {
+                accessToken = Tokens.Access_Token__c;
+            } else {
+                accessToken = null;
+            }
+
             for(Account acc : [select id, ParentId, Xero_Email__c, BillingCity, Xero_ID__c, BillingAddress, Billing_Contact__r.Email,
                                BillingState, BillingCountry,Billingstreet, Payment_Term__c,
                                BillingPostalCode, name, phone 
@@ -53,8 +64,7 @@ public class FinishWorkOrderHelper {
                     XeroContact requestXeroContact = new XeroContact(acc);
                     XeroContact responseXeroContact;
                     
-                    
-                    responseXeroContact = XeroAPI.sendContact(requestXeroContact);
+                    responseXeroContact = XeroAPI.sendContact(requestXeroContact,accessToken);
                     if(responseXeroContact.ContactID != null && responseXeroContact.ContactID != '')
                     {
                         acc.Xero_Id__c = responseXeroContact.ContactID;
@@ -69,10 +79,16 @@ public class FinishWorkOrderHelper {
             {
                 update lstAccountToUpdate;
             }
+            if (Tokens != null) {
+               update Tokens;
+            }
         }
         catch(Exception e)
         {
             XeroErrorLog_ByRes.createErrorLogForDml(e,className+' Method : getWorkOrder()', null, null, accountIds[0], false);
+            if (Tokens != null) {
+                update Tokens;
+            }
         }
     }
     
@@ -143,8 +159,18 @@ public class FinishWorkOrderHelper {
     {
         List<Id> workorderIds = new List<Id>();
         Boolean isUpdateWorkOrder = false;
+        String accessToken;
+        Xero_Setup__c Tokens;
         try
         {
+            DateTime currentDateTime = DateTime.now();
+            Tokens = FinishWorkOrderHelper.CheckResponse(currentDateTime);
+
+            if (Tokens != null) {
+                accessToken = Tokens.Access_Token__c;
+            } else {
+                accessToken = null;
+            }
             if(!set_InvoiceIds.isEmpty() && set_InvoiceIds.size() > 0)
             {
                 
@@ -329,8 +355,8 @@ public class FinishWorkOrderHelper {
                                 
                                 XeroContact responseXeroContact;
                                 //Account account = new Account();
-                                
-                                responseXeroContact = XeroAPI.sendContact(requestXeroContact);
+
+                                responseXeroContact = XeroAPI.sendContact(requestXeroContact,accessToken);
                                 if(responseXeroContact.ContactID != null && responseXeroContact.ContactID != '')
                                 {
                                     account.Xero_Id__c = responseXeroContact.ContactID;
@@ -421,7 +447,7 @@ public class FinishWorkOrderHelper {
                                     {
                                         //get Invice obj
                                         Invoice__c obj_Invoice = map_InvoicesToWorkOrderId.get(wo.Id);
-                                        InsertInvoiceWrapper responseInInvoiceWrapper = createInvoice(wo,obj_Invoice, acc, xeroContactId, lst_wOLineItem, myadd,completed_internally);
+                                        InsertInvoiceWrapper responseInInvoiceWrapper = createInvoice(wo,obj_Invoice, acc, xeroContactId, lst_wOLineItem, myadd,completed_internally,accessToken);
                                         //lstWorkOrderToUpdate.add(responseInInvoiceWrapper.workOrder);
                                         if(responseInInvoiceWrapper != null)
                                         {
@@ -678,14 +704,20 @@ public class FinishWorkOrderHelper {
                     
                 }
             }
+            if (Tokens != null) {
+                update Tokens;
+            }
         }
         catch(Exception e)
         {
             XeroErrorLog_ByRes.createErrorLogForDml(e,className+' Method : getWorkOrder()', null, workorderIds[0], null, isUpdateWorkOrder);
+            if (Tokens != null) {
+                update Tokens;
+            }
         }
     }
     
-    Public static InsertInvoiceWrapper createInvoice(Workorder wo, Invoice__c invoice, Account account, String xeroContactId, List<WorkOrderLineItem> lst_wOLineItem, String accForReferenceFieldUpdate,Boolean completed_internally)
+    Public static InsertInvoiceWrapper createInvoice(Workorder wo, Invoice__c invoice, Account account, String xeroContactId, List<WorkOrderLineItem> lst_wOLineItem, String accForReferenceFieldUpdate,Boolean completed_internally,String accessToken)
     {
         InsertInvoiceWrapper insertWrapperObj = new InsertInvoiceWrapper();
         
@@ -713,7 +745,7 @@ public class FinishWorkOrderHelper {
             System.debug('@@@### xeroInvoiceRequest :: @@  ::'+xeroInvoiceRequest);
             System.debug('@@@### xeroInvoiceRequest Reference:: @@  ::'+xeroInvoiceRequest.Reference);
             
-            xeroInvoice responseXeroInvoice = XeroAPI.sendInvoice(xeroInvoiceRequest);
+            xeroInvoice responseXeroInvoice = XeroAPI.sendInvoice(xeroInvoiceRequest,accessToken);
             if(responseXeroInvoice.InvoiceID != null && String.isNotBlank(responseXeroInvoice.InvoiceID))
             {
                 
@@ -798,7 +830,7 @@ public class FinishWorkOrderHelper {
             //|///////////////// *** Code Added Start Prepayment BY Yogesh *** //////////////////|
             //|//////////////////////////////////////////////////////////////////////////////////|
             
-            Boolean goWithPaymentCollectedByTech  = perPaymentManager(insertWrapperObj);
+            Boolean goWithPaymentCollectedByTech  = perPaymentManager(insertWrapperObj, accessToken);
             System.debug('!!! $$ prePay1 $$ !!! : '+prePay1);
             System.debug('!!! $$ prePay2 $$ !!! : '+prePay2);
             
@@ -835,7 +867,7 @@ public class FinishWorkOrderHelper {
                     
                     if(payAmount > 0)
                     {
-                        Decimal paidAmount = applyPaymentInXero(responseXeroInvoice.InvoiceID, xeroAccountCode, payAmount, paymentReference, insertWrapperObj);
+                        Decimal paidAmount = applyPaymentInXero(responseXeroInvoice.InvoiceID, xeroAccountCode, payAmount, paymentReference, insertWrapperObj, accessToken);
                         if(paidAmount > 0)
                         {
                             System.debug('@@## deposite paid in xero successfully with amount $ '+paidAmount);
@@ -868,7 +900,7 @@ public class FinishWorkOrderHelper {
                     
                     if(payAmount > 0)
                     {
-                        Decimal paidAmount = applyPaymentInXero(responseXeroInvoice.InvoiceID, xeroAccountCode, payAmount, paymentReference, insertWrapperObj);
+                        Decimal paidAmount = applyPaymentInXero(responseXeroInvoice.InvoiceID, xeroAccountCode, payAmount, paymentReference, insertWrapperObj, accessToken);
                         if(paidAmount > 0)
                         {
                             System.debug('@@## payment collected by tech paid in xero successfully with amount $ '+paidAmount);
@@ -905,7 +937,7 @@ public class FinishWorkOrderHelper {
             // update online invoice url on invoice object 
             if(responseXeroInvoice.InvoiceID != null && String.isNotBlank(responseXeroInvoice.InvoiceID))
             {
-                String onlineInvoiceUrl = XeroAPI.getOnlineInvoice(responseXeroInvoice.InvoiceID);
+                String onlineInvoiceUrl = XeroAPI.getOnlineInvoice(responseXeroInvoice.InvoiceID, accessToken);
                 if(onlineInvoiceUrl != null  && String.isNotBlank(onlineInvoiceUrl))
                 {
                     insertWrapperObj.invoice.Invoice_Url__c = onlineInvoiceUrl;
@@ -916,7 +948,7 @@ public class FinishWorkOrderHelper {
                     System.debug('onlineInvoiceUrl before call attechment fun : '+onlineInvoiceUrl);
                     if(!Test.isRunningTest())
                     {
-                        Attachment invoiceAttech = attachInvoice(onlineInvoiceUrl,responseXeroInvoice.InvoiceID, responseXeroInvoice.InvoiceNumber,account.Name);
+                        Attachment invoiceAttech = attachInvoice(onlineInvoiceUrl,responseXeroInvoice.InvoiceID, responseXeroInvoice.InvoiceNumber,account.Name, accessToken);
                         if(invoiceAttech != null)
                         {
                             insertWrapperObj.invoiceAttechment = invoiceAttech;
@@ -934,13 +966,13 @@ public class FinishWorkOrderHelper {
         return null;
     }
     
-    public static decimal applyPaymentInXero(String invoiceID, Integer xeroAccountCode, decimal payAmount, String reference, InsertInvoiceWrapper insertWrapperObj)
+    public static decimal applyPaymentInXero(String invoiceID, Integer xeroAccountCode, decimal payAmount, String reference, InsertInvoiceWrapper insertWrapperObj, String accessToken)
     {
         Decimal paidAmount = 0;
         XeroPayment requestXeroPayment = new  XeroPayment(invoiceID,xeroAccountCode,payAmount,reference);
         System.debug('## Yogesh@@@@ ## requestXeroPayment : '+requestXeroPayment);
         
-        XeroPayment responseXeroPayment = XeroAPI.sendPayment(requestXeroPayment);
+        XeroPayment responseXeroPayment = XeroAPI.sendPayment(requestXeroPayment,accessToken);
         if(responseXeroPayment.Invoice.InvoiceID != null)
         {
             paidAmount = payAmount;
@@ -953,7 +985,7 @@ public class FinishWorkOrderHelper {
         return payAmount;
     }
     
-    public static Boolean perPaymentManager(InsertInvoiceWrapper insertWrapperObj)
+    public static Boolean perPaymentManager(InsertInvoiceWrapper insertWrapperObj, String accessToken)
     {
         if(insertWrapperObj.workOrder != null && insertWrapperObj.invoice != null)
         {
@@ -985,7 +1017,7 @@ public class FinishWorkOrderHelper {
             //Make xero Prepayments callout 
             //List<XeroPrepayment> prePaymentsFromXero_lst = XeroAPI.getPrepayment(sf_PrePay1_Id, sf_PrePay2_Id);
             
-            List<XeroPrepayment> prePaymentsFromXero_lst = getXeroPrepaymentsOneByOne(sf_PrePay1_Id, sf_PrePay2_Id);
+            List<XeroPrepayment> prePaymentsFromXero_lst = getXeroPrepaymentsOneByOne(sf_PrePay1_Id, sf_PrePay2_Id, accessToken);
             if(!prePaymentsFromXero_lst.isEmpty() && prePaymentsFromXero_lst.size() > 0)
             {
                 for(XeroPrepayment prePayObj : prePaymentsFromXero_lst)
@@ -1045,7 +1077,7 @@ public class FinishWorkOrderHelper {
                             }
                             
                             XeroPrepaymentsAllocation xeroPrePaymentAllocateRequest = new XeroPrepaymentsAllocation(prePay1AmountRemaining_InString, invoice.Xero_ID__c);
-                            XeroPrepaymentsAllocation xeroPrePaymentAllocateResponse = XeroAPI.SendPrepaymentsAllocations(workOrder.Pre_payment_1_xero_id__c, xeroPrePaymentAllocateRequest);
+                            XeroPrepaymentsAllocation xeroPrePaymentAllocateResponse = XeroAPI.SendPrepaymentsAllocations(workOrder.Pre_payment_1_xero_id__c, xeroPrePaymentAllocateRequest, accessToken);
 	
                             if(String.isNotBlank(xeroPrePaymentAllocateResponse.Amount))
                             {
@@ -1105,7 +1137,7 @@ public class FinishWorkOrderHelper {
                             }
                             
                             XeroPrepaymentsAllocation xeroPrePaymentAllocateRequest = new XeroPrepaymentsAllocation(prePay2AmountRemaining_InString, invoice.Xero_ID__c);
-                            XeroPrepaymentsAllocation xeroPrePaymentAllocateResponse = XeroAPI.SendPrepaymentsAllocations(workOrder.Pre_payment_2_xero_id__c, xeroPrePaymentAllocateRequest);
+                            XeroPrepaymentsAllocation xeroPrePaymentAllocateResponse = XeroAPI.SendPrepaymentsAllocations(workOrder.Pre_payment_2_xero_id__c, xeroPrePaymentAllocateRequest, accessToken);
                            
                             if(String.isNotBlank(xeroPrePaymentAllocateResponse.Amount))
                             {
@@ -1143,14 +1175,14 @@ public class FinishWorkOrderHelper {
         return true;
     }
     
-    public static List<XeroPrepayment> getXeroPrepaymentsOneByOne(String id_prepay1, String id_prepay2)
+    public static List<XeroPrepayment> getXeroPrepaymentsOneByOne(String id_prepay1, String id_prepay2,String accessToken)
     {
      
         List<XeroPrepayment> xeroPrepayment_lst = new List<XeroPrepayment>();
         
 		if(String.isNotBlank(id_prepay1))
         {
-            List<XeroPrepayment> prepay1_FromXero = XeroAPI.getSinglePrepayment(id_prepay1);
+            List<XeroPrepayment> prepay1_FromXero = XeroAPI.getSinglePrepayment(id_prepay1, accessToken);
             
             if(!prepay1_FromXero.isEmpty() && prepay1_FromXero.size() > 0)
             {
@@ -1160,7 +1192,7 @@ public class FinishWorkOrderHelper {
         
         if(String.isNotBlank(id_prepay2))
         {
-            List<XeroPrepayment> prepay2_FromXero = XeroAPI.getSinglePrepayment(id_prepay2);
+            List<XeroPrepayment> prepay2_FromXero = XeroAPI.getSinglePrepayment(id_prepay2, accessToken);
             
             if(!prepay2_FromXero.isEmpty() && prepay2_FromXero.size() > 0)
             {
@@ -1171,7 +1203,7 @@ public class FinishWorkOrderHelper {
         return xeroPrepayment_lst;
     }
     
-    public static Attachment attachInvoice(String OnineInvoiceLink, String XeroId, String InvoiceNmber, String accName){
+    public static Attachment attachInvoice(String OnineInvoiceLink, String XeroId, String InvoiceNmber, String accName, String accessToken){
         
         String url = OnineInvoiceLink + '/Invoice/DownloadPdf/'+XeroId;
         System.debug('@@@ In attachInvoice -> url : '+url);
@@ -1181,7 +1213,7 @@ public class FinishWorkOrderHelper {
 
         if(String.isNotBlank(XeroId))
         {
-            blob file = XeroAPI.getInvoiceAsPdf(XeroId);
+            blob file = XeroAPI.getInvoiceAsPdf(XeroId, accessToken);
             if(file != null)
             {
                 Attachment n = new Attachment();
@@ -1214,6 +1246,37 @@ public class FinishWorkOrderHelper {
         public void addLineItem(Invoice_Line_Item__c lineItem)
         {
             this.lst_LineItems.add(lineItem);
+        }
+    }
+
+    public static Xero_Setup__c CheckResponse(DateTime dt){
+        String accessToken;
+        Xero_Setup__c xroSetup;
+
+        String resourceName = 'Invoices';
+        Map<String, String> modifiedHeader = null;
+        dt = dt.addDays(-7); //Get invoices to update in the last week
+        if (dt != null) 
+        {            
+            // Build the modified header
+            String strDate = String.valueOf(dt.date());
+            String strTime = String.valueOf(dt.time());
+            String strDateTime = strDate+'T'+strTime;
+            
+            System.debug('@@@ strDateTime = '+strDateTime);
+            
+            modifiedHeader = new Map<String, String> {'If-Modified-Since' => strDateTime};
+        }
+        
+        // Callout to Xero to retrieve invoices to update
+        HttpResponse response = XeroCalloutService.executeCallout('GET', resourceName, null, modifiedHeader); 
+         
+        if(response.getStatusCode() == 401){
+            xroSetup = XeroCalloutService.refreshToken();
+            //accessToken = xroSetup.Access_Token__c;
+            return xroSetup;
+        }else {
+            return null;
         }
     }
 }

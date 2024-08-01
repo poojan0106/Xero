@@ -1,21 +1,27 @@
 public with sharing class XeroCalloutService {
-        
+
+    public static String className = String.valueOf(XeroCalloutService.class);
     /**
     * 	@author Ben Edwards (ben@edwards.nz)
     *	@description Execute the physical callout and return the response
     * 	@return Returns the HttpResponse from the Xero API
     **/
     public static HttpResponse executeCallout (String method, String resourceName) {
-        return executeCallout(method, resourceName, null, null);
+        return executeCallout(method, resourceName, null, null,null);
     }
 
     public static HttpResponse executeCallout (String method, String resourceName, String requestBody) {
-        return executeCallout(method, resourceName, requestBody, null);
+        return executeCallout(method, resourceName, requestBody, null,null);
+    }
+    public static HttpResponse executeCallout (String method, String resourceName, String requestBody,Map<String, String> headers) {
+        return executeCallout(method, resourceName, requestBody, headers, null);
     }
 
-    public static HttpResponse executeCallout (String method, String resourceName, String requestBody, Map<String, String> headers) {
-        
-        Xero_Setup__c tokenRecord = [SELECT Id, Name, Access_Token__c, Refresh_Token__c, Token_Expiration_time__c FROM Xero_Setup__c LIMIT 1];
+    public static HttpResponse executeCallout (String method, String resourceName, String requestBody, Map<String, String> headers,String accessToken) {
+        Xero_Setup__c tokenRecord;
+        if (accessToken == null) {
+            tokenRecord = [SELECT Id, Name, Access_Token__c, Refresh_Token__c, Token_Expiration_time__c FROM Xero_Setup__c Order By CreatedDate Desc LIMIT 1];
+        }
         // Instantiate a new request
         HttpRequest request = new HttpRequest();
 
@@ -23,15 +29,16 @@ public with sharing class XeroCalloutService {
         request.setMethod(method);
 
         // Set the endpoint using the named credential
-        request.setEndpoint(
-            'callout:Xero_Dev/' +  
-            (resourceName.equalsIgnoreCase('connections') ? 'connections': 'api.xro/2.0/' + resourceName)
-        );
+        request.setEndpoint('https://api.xero.com/api.xro/2.0/' + resourceName);
         
         
         // Accept a JSON response from the call
         request.setHeader('Accept', 'application/json');
-        request.setHeader('Authorization', 'Bearer ' + tokenRecord.Access_Token__c);
+        if (accessToken != null) {
+            request.setHeader('Authorization', 'Bearer ' + accessToken);
+        } else {
+            request.setHeader('Authorization', 'Bearer ' + tokenRecord.Access_Token__c);
+        }
         // Set the Xero Tenant ID
         // request.setHeader('xero-tenant-id', Label.Xero_Tenant_Id);
         request.setHeader('xero-tenant-id', '0e4e3a44-ab85-4b7d-8469-ae171c45976c');
@@ -76,9 +83,10 @@ public with sharing class XeroCalloutService {
         // Execute callout and return
         return response;
     }  
-    @future(callout=true)
-    public static void refreshToken() {
-        Xero_Setup__c tokenRecord = [SELECT Id, Name, Access_Token__c, Refresh_Token__c, Token_Expiration_time__c FROM Xero_Setup__c LIMIT 1];
+
+    public static Xero_Setup__c refreshToken() {
+        try {
+        Xero_Setup__c tokenRecord = [SELECT Id, Name, Access_Token__c, Refresh_Token__c, Token_Expiration_time__c FROM Xero_Setup__c Order By CreatedDate Desc LIMIT 1];
         Xero_Admin__c adminSetup = Xero_Admin__c.getOrgDefaults();
         String token1 = adminSetup.Client_Id__c + ':' + adminSetup.Client_Secret__c;
         String encodedToken = EncodingUtil.base64Encode(Blob.valueOf(token1));
@@ -106,10 +114,19 @@ public with sharing class XeroCalloutService {
             tokenRecord1.Refresh_Token__c = newRefreshToken;
             tokenRecord1.Access_Token__c = newAccessToken;
             tokenRecord1.Token_Expiration_time__c = DateTime.now().AddMinutes(30);
-            update tokenRecord1;
-        } else {
-            System.debug('Failed to refresh token: ' + response.getBody());
+            System.debug('tokenRecord1 :-' +tokenRecord1);
+            return tokenRecord1;
+        }else{
+            System.debug('Error :-' +response.getStatusCode());
+            System.debug('Error Body :-' + response.getBody());
+            return null;
         }
+        } catch (Exception e) {
+            XeroErrorLog_ByRes.createErrorLogForDml(e,className+' Method : refreshToken()', null, null, null, false);
+            return null;
+        }
+    
     }
+    public class XeroApiException extends Exception { }
 
 }

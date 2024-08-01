@@ -30,13 +30,13 @@ public with sharing class XeroAPI {
     }
     
     //@description Retrieve perticular invoice //GET https://api.xero.com/api.xro/2.0/Invoices/9b9ba9e5-e907-4b4e-8210-54d82b0aa479/OnlineInvoice
-    public static String getOnlineInvoice(String invoiceId) {
+    public static String getOnlineInvoice(String invoiceId, String accessToken) {
                 
         String resourceName = 'Invoices';
         String onlineInvoice = 'OnlineInvoice';
         
         // Callout to Xero to retrieve invoices to update
-        HttpResponse response = XeroCalloutService.executeCallout('GET', resourceName  + '/' + invoiceId + '/'+onlineInvoice); 
+        HttpResponse response = XeroCalloutService.executeCallout('GET', resourceName  + '/' + invoiceId + '/'+onlineInvoice, null, null, accessToken); 
         
         if (response.getStatusCode() < 300) {
             
@@ -85,12 +85,12 @@ public with sharing class XeroAPI {
     }
     
     //@description Send a XeroContact to Xero
-    public static XeroContact sendContact (XeroContact xeroContact) {
+    public static XeroContact sendContact (XeroContact xeroContact, String accessToken) {
         
         String resourceName = 'Contacts';
         
         // Send the Contact to Xero
-        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroContact.serialize());
+        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroContact.serialize(), null, accessToken);
         
         // Determine if message was successfully sent
         Boolean isSuccess = response.getStatusCode() < 300;
@@ -130,11 +130,11 @@ public with sharing class XeroAPI {
     }
 
 	//@description Send a XeroPayment to Xero
-    public static XeroPayment sendPayment(XeroPayment xeroPayment) {
+    public static XeroPayment sendPayment(XeroPayment xeroPayment, String accessToken) {
         String resourceName = 'Payments';
         
         // Send the Invoice to Xero as an Invoice
-        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroPayment.serialize());
+        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroPayment.serialize(), null, accessToken);
         
         // Determine if message was successfully sent
         Boolean isSuccess = response.getStatusCode() < 300;
@@ -341,12 +341,12 @@ public with sharing class XeroAPI {
     */
     
     // @description Send a Salesforce Invoice to Xero as an Invoice
-    public static XeroInvoice sendInvoice (XeroInvoice xeroInvoice) {
+    public static XeroInvoice sendInvoice (XeroInvoice xeroInvoice, String accessToken) {
         
         String resourceName = 'Invoices';
         
         // Send the Invoice to Xero as an Invoice
-        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroInvoice.serialize());
+        HttpResponse response = XeroCalloutService.executeCallout('POST', resourceName, xeroInvoice.serialize(),null,accessToken);
         
         // Determine if message was successfully sent
         Boolean isSuccess = response.getStatusCode() < 300;
@@ -425,7 +425,7 @@ public with sharing class XeroAPI {
         return ((DateTime)modifiedDate).format('yyyy-MM-dd') + 'T00:00:00';
     } 
     
-    public static Blob getInvoiceAsPdf(String xeroId) {
+    public static Blob getInvoiceAsPdf(String xeroId, String accessToken) {
 
         String resourceName = 'Invoices';
 
@@ -433,7 +433,8 @@ public with sharing class XeroAPI {
         HttpResponse response = XeroCalloutService.executeCallout(
             'GET', resourceName + '/' + xeroId, 
             null, 
-            new Map<String, String>{'Accept' => 'application/pdf'}
+            new Map<String, String>{'Accept' => 'application/pdf'},
+            accessToken
         ); 
 
         if (response.getStatusCode() < 300) {
@@ -522,12 +523,12 @@ public with sharing class XeroAPI {
     }
     */
     
-    public static List<XeroPrepayment> getSinglePrepayment(String prePaymentId) {
+    public static List<XeroPrepayment> getSinglePrepayment(String prePaymentId, String accessToken) {
         
         String resourceName = 'Prepayments';
 
         // Callout to Xero to retrieve invoices to update
-        HttpResponse response = XeroCalloutService.executeCallout('GET', resourceName + '/' + prePaymentId); 
+        HttpResponse response = XeroCalloutService.executeCallout('GET', resourceName + '/' + prePaymentId,null,null,accessToken); 
         
         if (response.getStatusCode() < 300) {
             
@@ -551,13 +552,13 @@ public with sharing class XeroAPI {
     
     
     
-    public static XeroPrepaymentsAllocation SendPrepaymentsAllocations(String prePaymentXeroId, XeroPrepaymentsAllocation XeroPrepaymentObj) {
+    public static XeroPrepaymentsAllocation SendPrepaymentsAllocations(String prePaymentXeroId, XeroPrepaymentsAllocation XeroPrepaymentObj, String accessToken) {
 
         String resourceName = 'Allocations';
        	String urlForPrePayments = 'Prepayments/'+prePaymentXeroId+'/Allocations';
 
         // Send the Invoice to Xero as an Invoice
-        HttpResponse response = XeroCalloutService.executeCallout('PUT', urlForPrePayments, XeroPrepaymentObj.serialize());
+        HttpResponse response = XeroCalloutService.executeCallout('PUT', urlForPrePayments, XeroPrepaymentObj.serialize(),null,accessToken);
         
         // Determine if message was successfully sent
         Boolean isSuccess = response.getStatusCode() < 300;

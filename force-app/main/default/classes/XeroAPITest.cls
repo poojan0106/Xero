@@ -5,7 +5,22 @@
 @isTest 
 public class XeroAPITest {
     
-    
+    @testSetup
+    static void setup() {
+        Xero_Setup__c setupRecord = new Xero_Setup__c(
+            Access_Token__c = 'dummyAccessToken',
+            Refresh_Token__c = 'dummyRefreshToken',
+            Token_Expiration_time__c = DateTime.now().addMinutes(1)
+        );
+        insert setupRecord;
+        
+        Xero_Admin__c adminRecord = new Xero_Admin__c(
+            Client_Id__c = 'dummyClientId',
+            Client_Secret__c = 'dummyClientSecret'
+        );
+        insert adminRecord;
+    }
+
     @isTest 
     static void testGetContact() {
         
@@ -131,7 +146,7 @@ public class XeroAPITest {
         
         Test.startTest();
         
-        myXeroContact = XeroAPI.sendContact(myXeroContact);
+        myXeroContact = XeroAPI.sendContact(myXeroContact, 'accessToken');
         XeroConnection xc = new XeroConnection();
         Test.stopTest();
         
@@ -177,7 +192,7 @@ public class XeroAPITest {
             
             Test.startTest();
             
-            myXeroContact = XeroAPI.sendContact(myXeroContact);
+            myXeroContact = XeroAPI.sendContact(myXeroContact,'accessToken');
             Test.stopTest();
         }
         catch(Exception e)
@@ -241,7 +256,7 @@ public class XeroAPITest {
         
         Test.startTest();
         
-        myXeroContact = XeroAPI.sendContact(myXeroContact);
+        myXeroContact = XeroAPI.sendContact(myXeroContact,'accessToken');
         
         Test.stopTest();
         
@@ -413,11 +428,11 @@ public class XeroAPITest {
         
         // Set the Mock Class    
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Connections','XeroConnectionMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Contacts','XeroContactMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices','XeroInvoiceMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Payments','XeroPaymentMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Connections','XeroConnectionMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Contacts','XeroContactMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices','XeroInvoiceMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Payments','XeroPaymentMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
         
         multimock.setStatusCode(200);
         multimock.setHeader('Content-Type', 'application/json');
@@ -544,9 +559,9 @@ public class XeroAPITest {
         
         Test.startTest();
         
-        myXeroInvoice = XeroAPI.sendInvoice(myXeroInvoice);
+        myXeroInvoice = XeroAPI.sendInvoice(myXeroInvoice,'accessToken');
         XeroAPI.getModifiedInvoices(System.today());
-        XeroAPI.sendPayment(xp);
+        XeroAPI.sendPayment(xp,'accessToken');
         
         XeroOnlineInvoice xoi = new XeroOnlineInvoice();
         xoi.serialize();
@@ -573,11 +588,11 @@ public class XeroAPITest {
         // Set the Mock Class
         
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Connections','XeroConnectionMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Contacts','XeroContactMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices','XeroInvoiceMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Payments','XeroPaymentMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
+        // multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Connections','XeroConnectionMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Contacts','XeroContactMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices','XeroInvoiceMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Payments','XeroPaymentMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
         
         
         multimock.setStatusCode(200);
@@ -701,10 +716,21 @@ insert accChild;*/
         wrkOrder.Final_Service_Note__c = 'Yogesh';
         update wrkOrder;
         
-        //Blob pdf = XeroAPI.getInvoiceAsPdf('30aa67f9-d5e5-4351-9e28-c085a6b2d37f');
+        // Blob pdf = XeroAPI.getInvoiceAsPdf('30aa67f9-d5e5-4351-9e28-c085a6b2d37f');
         
     }
-    
+
+    @istest
+    static void testGetInvoiceAsPDF() {
+
+        //Set the Mock Class
+        Test.setMock(HttpCalloutMock.class, setStaticMock('XeroOnlineInvoiceMock'));
+        
+        Test.startTest();
+        
+        XeroAPI.getInvoiceAsPdf('30aa67f9-d5e5-4351-9e28-c085a6b2d37f','accessToken');
+        Test.stopTest();
+    } 
     @istest
     static void testGetXeroTenantId() {
         
@@ -755,7 +781,7 @@ insert accChild;*/
         
         try
         {
-            String xeroinvoiceResponse = XeroAPI.getOnlineInvoice('30aa67f9-d5e5-4351-9e28-c085a6b2d37f');
+            String xeroinvoiceResponse = XeroAPI.getOnlineInvoice('30aa67f9-d5e5-4351-9e28-c085a6b2d37f','accessToken');
         }
         catch(Exception e)
         {
@@ -776,7 +802,7 @@ insert accChild;*/
         Test.startTest();
         try
         {
-            String xeroinvoiceResponse = XeroAPI.getOnlineInvoice('30aa67f9-d5e5-4351-9e28-c085a6b2d37f');
+            String xeroinvoiceResponse = XeroAPI.getOnlineInvoice('30aa67f9-d5e5-4351-9e28-c085a6b2d37f','accessToken');
         }
         catch(Exception e)
         {
@@ -789,18 +815,18 @@ insert accChild;*/
     static testMethod void TestInvoiceCreationForParentAcc2ForPrepay()
     {
         MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Connections','XeroConnectionMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Contacts','XeroContactMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices','XeroInvoiceMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Payments','XeroPaymentMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Connections','XeroConnectionMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Contacts','XeroContactMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices','XeroInvoiceMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Payments','XeroPaymentMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Invoices/30aa67f9-d5e5-4351-9e28-c085a6b2d37f/OnlineInvoice','XeroOnlineInvoiceMock');
         
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Prepayments/?IDs=17020147-39af-46b0-9447-53b1ca7fdbd9,2e9f8bd3-6130-41d5-a7f7-ad746aa5c474','XeroPrepaymentsMock');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Prepayments/17020147-39af-46b0-9447-53b1ca7fdbd9','XeroPrepaymentsMock'); 
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Prepayments','XeroAllPrepayments');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Prepayments/?IDs=17020147-39af-46b0-9447-53b1ca7fdbd9,2e9f8bd3-6130-41d5-a7f7-ad746aa5c474','XeroPrepaymentsMock');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Prepayments/17020147-39af-46b0-9447-53b1ca7fdbd9','XeroPrepaymentsMock'); 
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Prepayments','XeroAllPrepayments');
         
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Prepayments/17020147-39af-46b0-9447-53b1ca7fdbd9/Allocations','XeroPrepaymentAllocations_350');
-        multimock.setStaticResource('callout:Xero/api.xro/2.0/Prepayments/2e9f8bd3-6130-41d5-a7f7-ad746aa5c474/Allocations','XeroPrepaymentAllocations_150');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Prepayments/17020147-39af-46b0-9447-53b1ca7fdbd9/Allocations','XeroPrepaymentAllocations_350');
+        multimock.setStaticResource('https://api.xero.com/api.xro/2.0/Prepayments/2e9f8bd3-6130-41d5-a7f7-ad746aa5c474/Allocations','XeroPrepaymentAllocations_150');
         
         
         multimock.setStatusCode(200);
@@ -1000,7 +1026,7 @@ insert accChild;*/
         try
         {
             
-            List<XeroPrepayment> perpays = XeroAPI.getSinglePrepayment('kk');
+            List<XeroPrepayment> perpays = XeroAPI.getSinglePrepayment('kk','accessToken');
         }
         catch(Exception e)
         {
